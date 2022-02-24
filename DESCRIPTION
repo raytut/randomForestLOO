@@ -1,0 +1,13 @@
+Package: randomForestLOO
+Type: Package
+Title: Random Forests with Leave-One-Out 
+Version: 0.5.0
+Author: Rayyan Tutunji
+Maintainer: Rayyan Tutunji <rayyan.tutunji@donders.ru.nl>
+Description: Extra functions as add-ons for Leave-One-Out classification using Random Forest models. Three main functions are available. 
+    rf.loo: For the estimation of models using different leave-one-out approaches.
+    rf.boot: A bootstrap model estimator for the estimation of the true chance level in models.
+    rf.null_test: A wrapper function to provide summary statistics on LOO models compared to bootstrapped counterparts. 
+License: CC BY
+Encoding: UTF-8
+LazyData: true
