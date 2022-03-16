@@ -12,7 +12,7 @@ LOSO (Leave-One-Subject-Out) will remove one entire subject from the training se
 LOBO (Leave-One-Beep-Out) offers within subject level predictions for EMA(Ecological Momentary Assessment) type data by training models on single subjects minus one Beep. Classification are thus derived for each subject this way. This analysis can be implemented on other types of trial based data.
 }
 \usage{
-rf.LOO(data, sub_id, xvars, yvar, NoTree, method, progress)
+rf.LOO(data, sub_id, xvars, yvar, ntree, method, progress)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
