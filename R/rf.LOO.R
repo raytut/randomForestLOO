@@ -48,7 +48,7 @@ rf.LOO <- function(data, sub_id, xvars, yvar, method, ntree, progress){
             # Run models
             try({
                 # Make the DF without the subject
-                df.train <- subset(data, data[[sub_id]] !=i)
+                df.train <- dplyr::filter(data, sub_id!=i)
                 df.train <- df.train[, Vars]
                 df.train <- na.omit(df.train)
 
@@ -79,7 +79,7 @@ rf.LOO <- function(data, sub_id, xvars, yvar, method, ntree, progress){
         # Close progress bar
         if (progress == TRUE){close(pb)
         }
-    # If we specify LOBO
+        # If we specify LOBO
     }else if(method=="LOBO"){
 
         # Setup progress bar
@@ -98,7 +98,7 @@ rf.LOO <- function(data, sub_id, xvars, yvar, method, ntree, progress){
             try({ # i='sub_001'
 
                 # Make a df for a single subject
-                df.rf <- subset(data, data[[sub_id]]==i)
+                df.rf <- dplyr::filter(data, sub_id==i)
                 df.rf <- df.rf[, Vars]
                 df.rf <- na.omit(df.rf)
 
