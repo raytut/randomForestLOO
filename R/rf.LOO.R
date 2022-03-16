@@ -59,7 +59,7 @@ rf.LOO <- function(data, sub_id, xvars, yvar, method, ntree, progress){
                                               importance = TRUE)
 
                 # Make the test data frame with the subject left out
-                df.test <- subset(data, data[[sub_id]]==i)
+                df.test <- dplyr::filter(data, sub_id==i)
                 df.test <- df.test[, Vars]
                 df.test <- na.omit(df.test)
 
