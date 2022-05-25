@@ -52,16 +52,18 @@ rf.LOO <- function(data, sub_id, xvars, yvar, method, ntree, progress){
                 df.train <- df.train[, Vars]
                 df.train <- na.omit(df.train)
 
+                # Make the test data frame with the subject left out
+                df.test <- dplyr::filter(data, sub_id==i)
+                df.test <- df.test[, Vars]
+                df.test <- na.omit(df.test)
+
                 # Make a random forest with the training data
                 forest.train <- randomForest( as.formula(paste(yvar, "~", paste(xvars, collapse="+"))),
                                               data=df.train,
                                               ntree=ntree,
                                               importance = TRUE)
 
-                # Make the test data frame with the subject left out
-                df.test <- dplyr::filter(data, sub_id==i)
-                df.test <- df.test[, Vars]
-                df.test <- na.omit(df.test)
+
 
                 # Make the predictions, and save as df
                 predictions <- predict(forest.train, newdata=df.test)

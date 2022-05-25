@@ -27,10 +27,10 @@ rf.boot <- function(data, sub_id, xvars, yvar, method, ntree, iterations, ncore)
 
     # Assign cluster nodes
     cl <- makeCluster(ncore-1)
-    registerDoSNOW(cl)
+    registerDoSNOW(cl, type="FORK")
     # Start parallel loop using dosnow
     forest.boot <- foreach(i=1:iterations, .options.snow=opts, .errorhandling="remove",
-                                 .export = c("data", "sub_id", "xvars", "yvar", "ntree","method", "progress", "rf.output", "rf.LOO"),
+                                 .export = c( "sub_id", "xvars", "yvar", "ntree","method", "progress", "rf.output", "rf.LOO"),
                                  .packages = c("dplyr", "randomForest"), .verbose=FALSE)  %dopar% {
 
         # Specify data frame and shuffle coloumns
