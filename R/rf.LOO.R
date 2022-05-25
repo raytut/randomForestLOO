@@ -153,6 +153,6 @@ rf.LOO <- function(data, sub_id, xvars, yvar, method, ntree, progress){
     if(method=="LOBO"){
         class(rf_loo) <- "RF-LOBO"
     }
-    rf_loo$mean_error <- mean(rf_loo$errors)
+    rf_loo$mean_error <- mean(rf_loo$errors, na.rm=TRUE)
     return(rf_loo)
 }
